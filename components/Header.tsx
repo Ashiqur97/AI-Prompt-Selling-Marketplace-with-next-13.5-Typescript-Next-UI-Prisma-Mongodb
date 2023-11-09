@@ -1,7 +1,8 @@
 import React,{useState} from 'react'
 import Link from "next/link";
 import Navigation from "./Navigation";
-
+import {AiOutlineSearch} from 'react-icons/ai';
+import {CgProfile} from 'react-icons/cg'
 
 type Props = {
     activeItem:number;
@@ -35,6 +36,14 @@ const Header = (activeItem: Props) => {
 
             <div className='flex'>
             <Navigation activeItem={activeItem} />
+            </div>
+
+            <div className='flex items-center ml-10'>
+                <AiOutlineSearch className="text-[25px] mr-5 cursor-pointer"/>
+
+                <Link href="/sign-in">
+                    <CgProfile className="text-[25px] cursor-pointer"/>
+                </Link>
             </div>
         </div>
     </div>
