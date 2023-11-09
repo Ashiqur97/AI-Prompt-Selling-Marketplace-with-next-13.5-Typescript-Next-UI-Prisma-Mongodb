@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import Link from "next/link";
 
 type Props = {}
 
@@ -20,7 +21,13 @@ const Header = (props: Props) => {
       }`}>
         
         <div className='hidden md:w-[90%] mx-auto md:flex items-center justify-between'>
-            
+            <div>
+                <Link href={"/"}>
+                    <h1 className="font-Inter text-3xl cursor-pointer">
+                        <span className='text-[#64ff4c]'>Bec</span>odemy
+                    </h1>
+                </Link>
+            </div>
         </div>
     </div>
   )
