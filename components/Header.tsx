@@ -1,9 +1,13 @@
 import React,{useState} from 'react'
 import Link from "next/link";
+import Navigation from "./Navigation";
 
-type Props = {}
 
-const Header = (props: Props) => {
+type Props = {
+    activeItem:number;
+}
+
+const Header = (activeItem: Props) => {
     const [active, setactive] = useState(false);
 
     if (typeof window !== "undefined") {
@@ -27,6 +31,10 @@ const Header = (props: Props) => {
                         <span className='text-[#64ff4c]'>Bec</span>odemy
                     </h1>
                 </Link>
+            </div>
+
+            <div className='flex'>
+            <Navigation activeItem={activeItem} />
             </div>
         </div>
     </div>
