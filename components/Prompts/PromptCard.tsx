@@ -1,6 +1,6 @@
 import React from 'react'
 import { styles } from "@/utils/styles";
-import {Card} from '@nextui-org/react'
+import {Avatar, Card,Divider} from '@nextui-org/react'
 import Image from 'next/image'
 
 type Props = {}
@@ -34,6 +34,15 @@ const PromptCard = (props: Props) => {
                 Animal Prompts
             </h3>
             <p className={`${styles.paragraph}`}>$25.00</p>
+        </div>
+        <Divider className="bg-[#ffffff18] my-3" />
+        <div className='w-full flex items-center justify-between'>
+            <div className='flex items-center'>
+                <Avatar src='https://i.pravatar.cc/150?u=a04258114e29026302d'/>
+                <span className={`${styles.label} pl-3`}>
+                    @Ashique
+                </span>
+            </div>
         </div>
     </Card>
   )
