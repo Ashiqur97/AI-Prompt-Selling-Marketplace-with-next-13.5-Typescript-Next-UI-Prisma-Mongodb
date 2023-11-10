@@ -4,7 +4,8 @@ import Header from '@/components/Header';
 import Hero from '@/components/Route/Hero';
 import About from '@/components/Route/About';
 import Image from "next/image";
-
+import { styles } from "@/utils/styles";
+import PromptCard from "@/components/Prompts/PromptCard";
 
 type Props = {}
 
@@ -36,6 +37,15 @@ const Page = (props: Props) => {
         <br/>
         <div className="w-[95%] md:w-[90%] xl:w-[8-%] 2xl:w-[75%] m-auto">
             <About/>
+            <div>
+            <h1 className={`${styles.heading} p-2 font-Monserrat`}>
+              Latest Prompts
+            </h1>
+
+                <div className="flex flex-wrap">
+                    <PromptCard/>
+                </div>
+            </div>
         </div>
     </div>
   )
