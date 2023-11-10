@@ -2,6 +2,7 @@ import React from 'react'
 import { styles } from "@/utils/styles";
 import {Avatar, Card,Divider} from '@nextui-org/react'
 import Image from 'next/image'
+import Ratings from '@/utils/Ratings';
 
 type Props = {}
 
@@ -43,6 +44,7 @@ const PromptCard = (props: Props) => {
                     @Ashique
                 </span>
             </div>
+            <Ratings rating={4.5} />
         </div>
     </Card>
   )
