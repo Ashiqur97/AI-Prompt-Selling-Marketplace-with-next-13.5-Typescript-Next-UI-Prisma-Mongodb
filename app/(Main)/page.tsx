@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from "react";
-import Header from '@/components/Header';
+import Header from '@/components/Layout/Header';
 import Hero from '@/components/Route/Hero';
 import About from '@/components/Route/About';
 import Image from "next/image";
