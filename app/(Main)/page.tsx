@@ -9,6 +9,7 @@ import PromptCard from "@/components/Prompts/PromptCard";
 import BestSellers from "@/components/Shop/BestSellers";
 import Future from "@/components/Route/Future";
 import Partners from "@/components/Route/Partners";
+import SellersBanner from "@/components/Shop/SellersBanner";
 
 type Props = {}
 
@@ -59,6 +60,7 @@ const Page = (props: Props) => {
                 <BestSellers />
                 <Future />
                 <Partners />
+                <SellersBanner />
             </div>
         </div>
     </div>
