@@ -25,7 +25,10 @@ const Future = (props: Props) => {
             <h5 className={`${styles.heading} mb-5 !leading-[50px]`}>
             Unleashing The Glorious Future Of Ai generated Images
             </h5>
-            <p></p>
+            <p className={`${styles.paragraph} pb-5`}>
+            One of the most prominent techniques in AI image generation is the
+            use of Generative Adversarial Networks
+            </p>
         </div>
     </div>
     </div>
