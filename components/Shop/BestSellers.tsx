@@ -12,6 +12,9 @@ const BestSellers = (props: Props) => {
         </h1>
         <div className='flex flex-wrap'>
             <SellerCard />
+            <SellerCard />
+            <SellerCard />
+            <SellerCard />
         </div>
     </div>
   )
