@@ -17,6 +17,8 @@ type Props = {
 const Header = (user,activeItem: Props) => {
     const [active, setactive] = useState(false);
     const [open,setOpen] = useState(false);
+    const [activeProfile,setactiveProfile] = useState(false);
+    const [isSellerExist,setIsSellerExist] = useState(false);
 
     if (typeof window !== "undefined") {
         window.addEventListener("scroll", () => {
@@ -33,7 +35,12 @@ const Header = (user,activeItem: Props) => {
         if(target.id === 'screen') {
             setOpen(!open);
         }
+      };
+
+      const handleProfile = () => {
+        setactiveProfile(!activeProfile)
       }
+
   return (
     <div className={`w-full p-5 border-b min-h-[60px] border-b-[#ffffff32] transition-opacity ${
         active && "fixed top-0 left-0 bg-[#000] z-[9999]"
