@@ -1,3 +1,4 @@
+import { ClerkProvider } from '@clerk/nextjs'
 import type { Metadata } from 'next'
 import './globals.css'
 import Provider from './(Providers)/NextUiProviders'
@@ -21,12 +22,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
+    <ClerkProvider>
     <html lang="en">
       <body className={`${inter.variable} ${monserrat.variable}`}>
-        <Provider>
-        {children}
-        </Provider>
+            <Provider>
+              {children}
+                </Provider>
         </body>
     </html>
+    </ClerkProvider> 
   )
 }
