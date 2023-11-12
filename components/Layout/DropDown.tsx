@@ -2,7 +2,9 @@ import React from 'react'
 import { styles } from "@/utils/styles";
 import {User} from '@clerk/nextjs/server'
 import {Avatar, Dropdown,DropdownItem,DropdownMenu,DropdownTrigger} from '@nextui-org/react';
-
+import Link from "next/link";
+import { GrDocumentStore } from "react-icons/gr";
+import { TbSwitchVertical } from "react-icons/tb";
 
 type Props = {
     user: User | null;
@@ -12,7 +14,7 @@ type Props = {
   };
 
 const DropDown = ({user,setOpen,handleProfile,isSellerExist}: Props) => {
-    
+   
   return (
     <Dropdown placeholder='bottom-start'>
         <DropdownTrigger>
@@ -39,6 +41,24 @@ const DropDown = ({user,setOpen,handleProfile,isSellerExist}: Props) => {
             </span>
           </div>
             </DropdownItem>
+
+            <DropdownItem>
+          <Link href={"/my-orders"} className="flex w-full items-center">
+            <GrDocumentStore className="text-[22px] ml-2 text-black" />
+            <span className={`${styles.label} text-black text-[16px] pl-2`}>
+              My Orders
+            </span>
+          </Link>
+        </DropdownItem>
+
+        <DropdownItem className={`${!isSellerExist && "hidden"}`}>
+          <Link href={"/my-shop"} className="flex w-full items-center">
+            <TbSwitchVertical className="text-2xl ml-2 text-black" />
+            <span className={`${styles.label} text-black text-[16px] pl-2`}>
+              Switching to Seller
+            </span>
+          </Link>
+        </DropdownItem>
         </DropdownMenu>
     </Dropdown>
   )

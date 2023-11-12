@@ -31,7 +31,7 @@ const Page = (props: Props) => {
   useEffect(() => {
     setLoading(true);
     axios.get("/api/me").then((res) => {
-      setUser(res.data);
+      setUser(res.data.user);
       setLoading(false);
     }).catch((error) => {
       console.log(error);

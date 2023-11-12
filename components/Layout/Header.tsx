@@ -78,8 +78,6 @@ const Header = (user,activeItem: Props) => {
                   </Link>
                     )
                   }
-             
-                <UserButton afterSignOutUrl='/' />
             </div>
         </div>
 
