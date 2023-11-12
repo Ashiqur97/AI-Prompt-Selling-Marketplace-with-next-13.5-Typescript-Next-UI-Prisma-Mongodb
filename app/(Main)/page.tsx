@@ -13,6 +13,7 @@ import SellersBanner from "@/components/Shop/SellersBanner";
 import { Divider } from "@nextui-org/react";
 import Footer from "@/components/Layout/Footer";
 import axios from "axios";
+import Loader from "@/utils/Loader";
 
 
 type Props = {}
@@ -47,7 +48,7 @@ const Page = (props: Props) => {
       {
         loading ? (
           <> 
-
+            <Loader />
           </>
         ) : (
           <div>
