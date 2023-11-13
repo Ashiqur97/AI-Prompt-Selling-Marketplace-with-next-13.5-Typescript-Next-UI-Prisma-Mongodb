@@ -123,6 +123,17 @@ const Header = (user,activeItem: Props) => {
                         <div className="fixed bg-black h-screen top-0 right-0 w-[60%] z-[9999]">
                                 <div className='mt-20 p-5'>
                                     <Navigation activeItem={activeItem} />
+
+                                    {
+                                      user && (
+                                        <DropDown 
+                                        user={user}
+                                        setOpen={setOpen}
+                                        handleProfile={handleProfile}
+                                        isSellerExist={isSellerExist}
+                                      />
+                                      )
+                                    }
                                 </div>  
                             </div>
                         </div>
