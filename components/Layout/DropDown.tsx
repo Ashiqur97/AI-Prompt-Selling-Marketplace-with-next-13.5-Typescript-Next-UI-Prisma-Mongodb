@@ -5,6 +5,7 @@ import {Avatar, Dropdown,DropdownItem,DropdownMenu,DropdownTrigger} from '@nextu
 import Link from "next/link";
 import { GrDocumentStore } from "react-icons/gr";
 import { TbSwitchVertical } from "react-icons/tb";
+import { AiOutlineLogout } from "react-icons/ai";
 
 type Props = {
     user: User | null;
@@ -58,6 +59,15 @@ const DropDown = ({user,setOpen,handleProfile,isSellerExist}: Props) => {
               Switching to Seller
             </span>
           </Link>
+        </DropdownItem>
+
+        <DropdownItem onClick={handleLogOut}>
+          <div className="flex items-center w-full">
+            <AiOutlineLogout className="text-2xl ml-2 text-black" />
+            <span className={`${styles.label} text-black text-[16px] pl-2`}>
+              Log out
+            </span>
+          </div>
         </DropdownItem>
         </DropdownMenu>
     </Dropdown>
