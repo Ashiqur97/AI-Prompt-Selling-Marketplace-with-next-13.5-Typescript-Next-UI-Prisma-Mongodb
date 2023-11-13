@@ -6,6 +6,8 @@ import Link from "next/link";
 import { GrDocumentStore } from "react-icons/gr";
 import { TbSwitchVertical } from "react-icons/tb";
 import { AiOutlineLogout } from "react-icons/ai";
+import { useClerk } from '@clerk/nextjs';
+import {useRouter} from "next/navigation";
 
 type Props = {
     user: User | null;
@@ -15,6 +17,13 @@ type Props = {
   };
 
 const DropDown = ({user,setOpen,handleProfile,isSellerExist}: Props) => {
+
+  const {signOut} = useClerk();
+  const router = useRouter();
+  const handleLogOut = async () => {
+    await signOut();
+    router.push("/sign-in");
+  };
    
   return (
     <Dropdown placeholder='bottom-start'>
