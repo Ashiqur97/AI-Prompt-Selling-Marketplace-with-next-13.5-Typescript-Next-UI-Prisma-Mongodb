@@ -163,6 +163,48 @@ const UploadPrompt = (props: Props) => {
         <h1 className={`${styles.heading} text-center py-5`}>
             Upload Your Prompt
         </h1>
+
+        <form className="w-[90%] m-auto" onSubmit={handleSubmit}>
+        <Input
+          type="text"
+          label="Title"
+          value={promptData.name}
+          onChange={(e) =>
+            setPromptData({ ...promptData, name: e.target.value })
+          }
+          variant="bordered"
+          required
+          placeholder="Enter your prompt title"
+        />
+        <br/>
+
+        <Input
+          type="text"
+          label="Short Description"
+          value={promptData.shortDescription}
+          onChange={(e) =>
+            setPromptData({ ...promptData, shortDescription: e.target.value })
+          }
+          variant="bordered"
+          required
+          placeholder="Enter a short Description for your prompt *"
+        />
+        <br/>
+         <Textarea
+          variant={"bordered"}
+          value={promptData.description}
+          onChange={(e) =>
+            setPromptData((prevData) => ({
+              ...prevData,
+              description: e.target.value,
+            }))
+          }
+          required
+          size="lg"
+          placeholder="Write one detailed description for your prompt *"
+        />
+        <br />
+        </form>
     </div>
   )
 }
