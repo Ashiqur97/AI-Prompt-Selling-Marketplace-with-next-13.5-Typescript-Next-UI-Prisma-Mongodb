@@ -1,6 +1,14 @@
 import React,{useState} from 'react'
 import {styles} from "@/utils/styles"
-
+import { useAuth } from "@clerk/nextjs";
+import {
+    Button,
+    Input,
+    Select,
+    SelectItem,
+    Selection,
+    Textarea,
+  } from "@nextui-org/react";
 
 type Props = {}
 
@@ -41,7 +49,12 @@ const UploadPrompt = (props: Props) => {
         price: "",
         tags: "",
     });
-    
+
+    const [dragging, setDragging] = useState<Boolean>(false);
+    const { userId } = useAuth();
+    const [isLoading, setIsLoading] = useState(false);
+    const [category, setCategory] = useState<Selection>(new Set([]));
+
   return (
     <div>
         <h1 className={`${styles.heading} text-center py-5`}>
