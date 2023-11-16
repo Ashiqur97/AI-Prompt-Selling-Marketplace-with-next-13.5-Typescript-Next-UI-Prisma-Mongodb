@@ -78,7 +78,86 @@ const UploadPrompt = (props: Props) => {
     }
   };
 
-  
+  const handleAttachmentFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const files = Array.from(e.target.files);
+
+      files.forEach((file) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          if (reader.readyState === 2) {
+            setPromptData((prevData) => ({
+              ...prevData,
+              attachments: [...prevData.attachments, reader.result as string],
+            }));
+          }
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+  };
+
+  const handleDragOver = (e: DragEvent<HTMLLabelElement>) => {
+    e.preventDefault();
+    setDragging(true);
+  };
+
+  const handleDragLeave = (e: DragEvent<HTMLLabelElement>) => {
+    e.preventDefault();
+    setDragging(false);
+  };
+
+  const handleImageDrop = (e: DragEvent<HTMLLabelElement>) => {
+    e.preventDefault();
+    setDragging(false);
+
+    if (e.dataTransfer.files) {
+      const files = Array.from(e.dataTransfer.files);
+
+      files.forEach((file) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          if (reader.readyState === 2) {
+            setPromptData((prevData) => ({
+              ...prevData,
+              images: [...prevData.images, reader.result as string],
+            }));
+          }
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+  };
+
+  const handleAttachmentDrop = (e: DragEvent<HTMLLabelElement>) => {
+    e.preventDefault();
+    setDragging(false);
+    if (e.dataTransfer.files) {
+      const files = Array.from(e.dataTransfer.files);
+
+      files.forEach((file) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          if (reader.readyState === 2) {
+            setPromptData((prevData) => ({
+              ...prevData,
+              attachments: [...prevData.attachments, reader.result as string],
+            }));
+          }
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  }
+
+  const handleSelectionChange = (e:React.ChangeEvent<HTMLSelectElement>) => {
+    setCategory(new Set([e.target.value]));
+  }
+
   return (
     <div>
         <h1 className={`${styles.heading} text-center py-5`}>
