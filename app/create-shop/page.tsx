@@ -16,12 +16,22 @@ const Page = (props: Props) => {
     const [shopData,setShopData] = useState({
         name:"",
         description:"",
-        shopProductType:"",
+        shopProductsType:"",
         avater:"",
     });
 
     const handleSubmit = async(e:React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
+        e.preventDefault();
+        if(user) {
+            const data = {
+                name:shopData.description,
+                description: shopData.description,
+                shopProductsType: shopData.shopProductsType,
+                avatar: user?.imageUrl || '',
+                userId: user?.id,
+            };
+            
+        }
     }
 
   return (
@@ -30,7 +40,7 @@ const Page = (props: Props) => {
             <h1 className={`${styles.heading} text-center font-Monserrat`}>
                 Start to selling with us
             </h1>
-            <form className="2xl:w-[40%] xl:w-[50%] md:w-[70%] w-[90%] m-auto">
+            <form className="2xl:w-[40%] xl:w-[50%] md:w-[70%] w-[90%] m-auto" onSubmit={handleSubmit}>
                 <div className="w-full my-5">
                     <label className={`${styles.label} mb-2 block`}>
                         Shop Name
@@ -63,6 +73,24 @@ const Page = (props: Props) => {
             <label className={`${styles.label} mb-2 block`}>
               What you wanna sale with us?
             </label>
+
+            <Textarea
+              variant="bordered"
+              value={shopData.shopProductsType}
+              onChange={(e) =>
+                setShopData({ ...shopData, shopProductsType: e.target.value })
+              }
+              required
+              placeholder="Chatgpt,Midjoureney Prompts..."
+              className="col-span-12 md:col-span-6 md:mb-0"
+            />
+            <br />
+            <Button
+              className="mb-3 w-full bg-transparent h-[45px] border border-[#16c252] text-[#16c252] hover:bg-[#16c252] hover:text-black duration-300 transition-opacity font-Inter font-[600]"
+              type="submit"
+              disabled={loading}
+              disableAnimation={loading}
+            />
                 </div>
             </form>
         </div>
