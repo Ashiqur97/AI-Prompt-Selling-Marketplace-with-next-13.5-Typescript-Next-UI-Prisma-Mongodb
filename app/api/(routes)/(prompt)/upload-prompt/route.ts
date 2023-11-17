@@ -50,8 +50,23 @@ export async function POST(req:NextRequest) {
           delete data.promptUrl;
           const sellerId = user?.id;
 
+          const newPrompt = await prisma.prompts.create({
+            data: {
+                ...data,
+                images:data.images,
+                promptUrl: {
+                    createMany: {
+                        data: promptUrlData.map((prompt:any) => ({
+                            public_id: prompt.piblic_id,
+                            url: prompt.url,
+                        }))
+                    }
+                }
+            }
+          })
+
     } catch (error) {
         console.log('create product error',error);
         return new NextResponse("Internal server error",{status:500});
-    }
+    } 
 }
