@@ -152,6 +152,32 @@ const UploadPrompt = (props: Props) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
+    const categoryString = Array.from(category).join(",");
+    await axios.post("/api/upload-prompt", {
+      ...promptData,
+      category:categoryString,
+      sellerId:userId,
+    }).then((res) => {
+      setIsLoading(false);
+      toast.success("Prompt uploaded successfully");
+      setPromptData({
+        name: "",
+        shortDescription: "",
+        description: "",
+        images: [],
+        attachments: [],
+        estimatedPrice: "",
+        price: "",
+        tags: "",
+      });
+      redirect("/shop/prompts");
+    })
+    .catch((error) => {
+      setIsLoading(false);
+      console.log(error);
+      // toast.error(error.data.message);
+    });
   }
 
   const handleSelectionChange = (e:React.ChangeEvent<HTMLSelectElement>) => {
