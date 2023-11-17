@@ -204,6 +204,77 @@ const UploadPrompt = (props: Props) => {
           placeholder="Write one detailed description for your prompt *"
         />
         <br />
+
+          <div className="md:flex md:w-full">
+          <Input
+            type="number"
+            label="Propmt estimated price"
+            variant="bordered"
+            value={promptData.estimatedPrice}
+            onChange={(e) =>
+              setPromptData((prevData) => ({
+                ...prevData,
+                estimatedPrice: e.target.value,
+              }))
+            }
+            placeholder="US$40"
+            required
+            className="mb-6 md:mb-0"
+          />
+          <Input
+            type="number"
+            label="Propmt price *"
+            value={promptData.price}
+            onChange={(e) =>
+              setPromptData((prevData) => ({
+                ...prevData,
+                price: e.target.value,
+              }))
+            }
+            variant="bordered"
+            placeholder="US$29.99"
+            className="md:ml-10"
+            required
+          />
+        </div>
+        <br/>
+
+        <div className="md:flex md:w-full">
+          <Select
+            label="Choose one category"
+            variant="bordered"
+            placeholder="Select one category"
+            selectedKeys={category}
+            className="max-w-full mb-5 md:mb-[0]"
+            onChange={handleSelectionChange}
+          >
+            {categorieItem.map((item) => (
+              <SelectItem
+                key={item.title}
+                value={item.title}
+                className="text-black"
+              >
+                {item.title}
+              </SelectItem>
+            ))}
+          </Select>
+          <Input
+            type="text"
+            label="Propmt tags *"
+            value={promptData.tags}
+            onChange={(e) =>
+              setPromptData((prevData) => ({
+                ...prevData,
+                tags: e.target.value,
+              }))
+            }
+            required
+            variant="bordered"
+            placeholder="AI,Photo,Arts"
+            className="md:ml-10"
+          />
+        </div>
+        
         </form>
     </div>
   )
