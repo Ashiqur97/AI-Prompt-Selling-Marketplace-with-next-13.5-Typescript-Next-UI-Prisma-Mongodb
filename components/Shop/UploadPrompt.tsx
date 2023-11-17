@@ -274,7 +274,98 @@ const UploadPrompt = (props: Props) => {
             className="md:ml-10"
           />
         </div>
-        
+        <br/>
+
+        <div className="w-full">
+          <input
+            type="file"
+            required
+            accept="image/*"
+            multiple
+            id="file"
+            className="hidden"
+            onChange={handleImageFileChange}
+          />
+          <label
+            htmlFor="file"
+            className={`w-full rounded-md min-h-[15vh] border-white p-3 border  flex items-center justify-center ${
+              dragging ? "bg-blue-500" : "bg-transparent"
+            }`}
+            onDragOver={handleDragOver}
+            onDragLeave={handleDragLeave}
+            onDrop={handleImageDrop}
+          >
+            {promptData.images.length !== 0 ? (
+              <div className="w-full flex flex-wrap">
+                {promptData.images.map((item) => (
+                  <Image
+                    src={item}
+                    alt=""
+                    width={500}
+                    height={400}
+                    key={item}
+                    className="w-full md:w-[48%] object-cover md:m-2 my-2"
+                  />
+                ))}
+              </div>
+            ) : (
+              <span className="text-white">
+                Drag and drop your prompt images here or click to browse
+              </span>
+            )}
+          </label>
+        </div>
+        <br/>
+        <br/>
+        <div className="w-full">
+          <input
+            type="file"
+            required
+            accept=".txt, .pdf"
+            multiple
+            id="attachment"
+            className="hidden"
+            onChange={handleAttachmentFileChange}
+          />
+          <label
+            htmlFor="attachment"
+            className={`w-full rounded-md min-h-[15vh] border-white p-3 border  flex items-center justify-center ${
+              dragging ? "bg-blue-500" : "bg-transparent"
+            }`}
+            onDragOver={handleDragOver}
+            onDragLeave={handleDragLeave}
+            onDrop={handleAttachmentDrop}
+          >
+            {promptData.attachments.length !== 0 ? (
+              <div className="flex items-center">
+                <IoDocumentAttachOutline className="text-3xl" />
+                <span className={`${styles.label} pl-2 !text-2xl pt-1`}>
+                  {promptData?.attachments?.length}{" "}
+                  {promptData?.attachments?.length > 1 ? "files" : "file"}
+                </span>
+              </div>
+            ) : (
+              <span className="text-white">
+                Drag and drop your prompt files here or click to browse
+              </span>
+            )}
+          </label>
+        </div>
+        <br />
+        <br />
+        <div className="w-full flex items-center justify-center">
+          <Button
+            color="primary"
+            className={`${styles.button}`}
+            type="submit"
+            disabled={isLoading}
+            disableAnimation={isLoading}
+          >
+            Upload your prompt
+          </Button>
+        </div>
+        <br/>
+        <br/>
         </form>
     </div>
   )
