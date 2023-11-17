@@ -21,3 +21,27 @@ model Shops {
   updateAt DateTime @updatedAt
   userId String @unique
 }
+
+model Images {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  public_id String
+  url       String
+  Prompts   Prompts? @relation(fields: [promptId], references: [id])
+  promptId  String?  @db.ObjectId
+}
+
+
+
+model Prompots {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  name String 
+  shortDescription String 
+  description String 
+  images Image[]
+  estimatedPrice Float?
+  price Float 
+  category String 
+  tags String 
+  rating Float @default(0)
+  reviews 
+}

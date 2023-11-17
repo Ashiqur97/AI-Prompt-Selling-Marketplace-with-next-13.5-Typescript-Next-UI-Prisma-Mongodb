@@ -22,9 +22,36 @@ export async function POST(req:NextRequest) {
                         }
                     }
                 })
-            )
-        }
-    } catch (error) {
+            );
 
+            data.images = {
+                createMany : {
+                    data: uploadImages.map((image) => image.create),
+                },
+            };
+        }
+
+        if (data.attachments && data.attachments.length > 0) {
+            const uploadedAttachments = await Promise.all(
+              data.attachments.map(async (attachment: string) => {
+                const result = await cloudinary.uploader.upload(attachment, {
+                  resource_type: "auto",
+                });
+                return { public_id: result.public_id, url: result.secure_url };
+              })
+            );
+            data.promptUrl = uploadedAttachments;
+            delete data.attachments;
+          }
+          data.estimatePrice = parseFloat(data.estimatePrice);
+          data.price = parseFloat(data.price);
+
+          const promptUrlData = data.promptUrl;
+          delete data.promptUrl;
+          const sellerId = user?.id;
+
+    } catch (error) {
+        console.log('create product error',error);
+        return new NextResponse("Internal server error",{status:500});
     }
 }
